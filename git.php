@@ -59,6 +59,12 @@ $commands = [
             $_SESSION['output'] = null;
         }
     ],
+    'disconnect' => [
+        'instructions' => [],
+        'callback' => function () {
+            session_destroy();
+        }
+    ],
     'delete' => [
         'hide' => true,
         'instructions' => [],
@@ -78,7 +84,7 @@ if (isset($_GET['command']) && in_array($_GET['command'], array_keys($commands))
     header('Location: /?cache=' . time());
     die;
 } elseif (isset($_GET['command'])) {
-    header('Location: /?cache=' . time());
+    header('Location: /git.php?cache=' . time());
     die;
 }
 

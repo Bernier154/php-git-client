@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev":"npx @tailwindcss/cli -m -o style.css --watch"
+    "dev":"npx @tailwindcss/cli -m -o style.css --watch",
+    "serve":"php -S localhost:8080"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
