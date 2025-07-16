@@ -1,10 +1,8 @@
 <?php
-
+session_start();
 define('ROOT_PATH', __DIR__ . '/');
 $env = parse_ini_file(ROOT_PATH . '.env');
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 if (!isset($_SESSION['auth_with_key']) || $_SESSION['auth_with_key'] != true) {
     if (isset($_GET['token']) && $_GET['token'] == $env['ACCESS_TOKEN']) {
         unset($env['ACCESS_TOKEN']);
@@ -81,7 +79,7 @@ if (isset($_GET['command']) && in_array($_GET['command'], array_keys($commands))
     if (isset($commands[$_GET['command']]['callback'])) {
         $commands[$_GET['command']]['callback']();
     }
-    header('Location: /?cache=' . time());
+    header('Location: /git.php?cache=' . time());
     die;
 } elseif (isset($_GET['command'])) {
     header('Location: /git.php?cache=' . time());
